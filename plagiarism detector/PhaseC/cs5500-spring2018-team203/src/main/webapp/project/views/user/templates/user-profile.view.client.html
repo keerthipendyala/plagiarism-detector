@@ -1,0 +1,159 @@
+<!-- This is the view for user profile page -->
+<div class="container-fluid">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.name}}!
+            </span>
+             <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+            <div class="navbar-header">
+                <a class="pull-left fas-style" ng-click="model.goBack()">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a class="pull-left" href="#">
+                    <img src="images/icon-team203.png"
+                         width="60" height="50">
+                </a>
+                <span class="logo pull-left">
+                 CopyCatch
+            </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-top">
+        <!-- Tabs Titles -->
+        <h3 class="text-center page-title">User Profile Page</h3>
+        <!-- Takes the admin user to view all users page-->
+        <div ng-show="model.userInfo.role === 'admin'">
+            <button class="btn btn-primary btn-xs" ng-click="model.adminpage()">
+                View Users
+            </button>
+        </div>
+        <!-- Edit Form -->
+        <form name="editForm" ng-class="{submitted:formEdit.submitted}">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
+
+            <br/>
+
+            <div ng-show="model.message" class="alert alert-success" role="alert">
+                {{model.message}}
+            </div>
+
+            <div class="form-group">
+                <h6>USERNAME</h6>
+                <input ng-model="model.userInfo.username" name="username"
+                       maxlength="40" type="text" class="form-control" required/>
+            </div>
+
+            <div class="form-group">
+                <h6>FULL NAME</h6>
+                <input ng-model="model.userInfo.fullname" name="fullname" type="text"
+                       maxlength="40" class="form-control" required/>
+            </div>
+
+            <div class="form-group">
+                <h6>PASSWORD</h6>
+                <input ng-model="model.userInfo.password" name="password"
+                placeholder="password"
+                       maxlength="25" type="password" class="form-control" requiredx/>
+            </div>
+
+            <div class="form-group">
+                <h6>VERIFY PASSWORD</h6>
+                <input ng-model="model.userInfo.verifyPassword" name="password"
+                       maxlength="25" type="password" class="form-control" required/>
+            </div>
+
+            <div class="form-group">
+                <h6>PHONE NUMBER</h6>
+                <input ng-model="model.userInfo.phone" name="phone"
+                       maxlength="15" type="text" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <h6>ADDRESS</h6>
+                <input ng-model="model.userInfo.address" name="address"
+                       maxlength="60" type="text" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <h6>DATE OF BIRTH(yyyy-mm-dd)</h6>
+                <input ng-model="model.userInfo.dateofBirth" name="dob"
+                       type="date" class="form-control dob"/>
+            </div>
+
+            <div class="form-group">
+                <h6>EMAIL</h6>
+                <input ng-model="model.userInfo.email" name="email"
+                       maxlength="40" type="email" class="form-control"/>
+            </div>
+
+            <div ng-if="model.userInfo.role === 'student'">
+
+                <div class="form-group">
+                    <h6>STATUS</h6>
+                    <input ng-model="model.userInfo.status" name="status"
+                           maxlength="40" type="text" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <h6>DATE OF GRADUATION(yyyy-mm-dd)</h6>
+                    <input ng-model="model.userInfo.dateofgraduation" name="graddate"
+                           type="date" class="form-control"/>
+                </div>
+
+            </div>
+
+            <div ng-if="model.userInfo.role === 'professor'">
+                <div class="form-group">
+                    <h6>TITLE</h6>
+                    <input ng-model="model.userInfo.title" name="title"
+                           maxlength="40" type="text" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <h6>DEGREE</h6>
+                    <input ng-model="model.userInfo.degree" name="degree"
+                           maxlength="40" type="text" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <h6>DEPARTMENT</h6>
+                    <input ng-model="model.userInfo.department" name="department"
+                           maxlength="40" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <a class="btn btn-primary btn-block"
+                   ng-click="model.validationAndUpdate(model.userInfo)">
+                    Update
+                </a>
+            </div>
+
+            <div ng-hide="model.userInfo.role === 'admin'" class="form-group">
+                <a class="btn btn-warning btn-block" ng-click="model.coursepage()">
+                    Take me to the course page
+                </a>
+            </div>
+        </form>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-text pull-left">
+                    <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="body-top">
+
+    <div class="prof-section container-fluid">
+        <strong>Note to Professors!</strong> You cannot self register. To send a registration
+        request to the administrator, <a href="" class="alert-link" data-toggle="modal"
+                                         data-target="#modalProfessorRegister"> click here.. </a>
+    </div>
+
+
+    <form name="professorForm" ng-class="{submitted:professorForm.submitted}" class="modal fade"
+          id="modalProfessorRegister" tabindex="-1"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <button type="button" class="btn-link pull-right" ng-click="model.resetModal()">
+                        <i class="glyphicon glyphicon-refresh refresh"></i>
+                    </button>
+                    <h4 class="modal-title">Professor Registration Request Form</h4>
+                </div>
+
+                <div class="modal-body mx-3">
+
+                    <div ng-show="model.profSuccess" class="alert alert-success">
+                        <strong>Request Sent!</strong> We will keep you posted on the updates of your
+                        application</a>.
+                    </div>
+
+                    <div ng-show="model.profError" class="alert alert-danger alert-dismissible">
+                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                        <strong>Error!</strong> {{model.profError}}
+                    </div>
+
+                    <div ng-show="model.profNoMatch" class="alert alert-danger alert-dismissible">
+                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                        <strong>Error!</strong> {{model.profNoMatch}}
+                    </div>
+
+                    <div ng-show="model.profMessage" class="alert alert-danger alert-dismissible">
+                        <span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+                        <strong>Error!</strong> {{model.profMessage}}
+                    </div>
+
+
+                    <div class="md-form mb-5">
+                        <label class="control-label" for="username">
+                            Username
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="glyphicon glyphicon-user  "></i>
+                            </div>
+                            <input ng-model="prof.username" id="username" name="username"
+                                   maxlength="40" type="text" class="form-control" placeholder="username" required/>
+                        </div>
+                    </div>
+                    <div class="md-form mb-4">
+                        <label class="control-label" for="password">
+                            Password
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="glyphicon glyphicon-eye-close"></i></div>
+                            <input ng-hide="passwordVisible" id="password" ng-model="prof.password" name="password"
+                                   maxlength="25" type="password" class="form-control" placeholder="password"
+                                   required/>
+                        </div>
+                        <label class="control-label" for="verifyHide">
+                            Verify Password
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="glyphicon glyphicon-eye-close"></i></div>
+                            <input ng-hide="verifyPasswordVisible" ng-model="prof.verifyPassword"
+                                   maxlength="25" name="verifyPassword" id="verifyHide" type="password" class="form-control"
+                                   placeholder="*********" required/>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="username">
+                                FullName
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fas fa-address-card"></i>
+                                </div>
+                                <input ng-model="prof.fullname" id="fullname" name="fullname"
+                                       maxlength="40" type="text" class="form-control" placeholder="fullname" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="email">
+                                Email
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </div>
+                                <input ng-model="prof.email" id="email" name="email"
+                                       maxlength="40" type="email" class="form-control" placeholder="bob@gmail.com" required/>
+                            </div>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="description">
+                                Message
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="far fa-clipboard"></i>
+                                </div>
+                                <textarea ng-model="prof.description" id="description" name="description"
+                                          placeholder="Message to Admin.." class="form-control">
+                                    </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button ng-click="model.professorRegister(prof)"
+                                    class="btn btn-success">Send <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>

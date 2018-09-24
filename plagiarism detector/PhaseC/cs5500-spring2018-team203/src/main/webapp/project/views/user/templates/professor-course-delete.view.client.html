@@ -1,0 +1,84 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="shredder-body">
+    <div class="shredded-paper tk-museo-sans">
+        <div class="content">
+            <div class="shred-alert">
+                <div style="color: maroon; font-weight: bold ;text-align: center">
+                Are you sure ?
+                </div>
+                <div class="shred-font">
+                    Title : <b>{{model.profCourse.coursename}}</b>
+                </div>
+                <div class="shred-font">
+                    About : {{model.profCourse.courseno}}
+                </div>
+            </div>
+            <div ng-click="model.deleteCourse()" class="shred-me">
+                DELETE!
+            </div>
+        </div>
+        <div class="part-1">
+        </div>
+        <div class="part-2">
+        </div>
+        <div class="part-3">
+        </div>
+        <div class="part-4">
+        </div>
+        <div class="part-5">
+        </div>
+        <div class="part-6">
+        </div>
+        <div class="part-7">
+        </div>
+        <div class="part-8">
+        </div>
+        <div class="part-9">
+        </div>
+        <div class="part-10">
+        </div>
+    </div>
+
+    <div class="shredder-holder">
+        <div class="shredder tk-museo-sans">
+            SHREDDER
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!--Reference : https://www.inserthtml.com/2013/06/css-shredder/-->

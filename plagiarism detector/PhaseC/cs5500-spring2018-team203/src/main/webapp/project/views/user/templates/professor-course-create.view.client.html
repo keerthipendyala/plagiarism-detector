@@ -1,0 +1,85 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+             <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="body-top">
+    <div class="row">
+        <div class="col-sm-5 hidden-xs">
+            <div class="container-fluid">
+                <h3 class="page-title fadeIn first">Courses</h3>
+                <br/>
+                <table ng-show="model.userCourses" class="table table-striped table-responsive fadeIn first">
+                    <thead>
+                    <tr>
+                        <th class="hidden-sm hidden-md">ID</th>
+                        <th>Name</th>
+                        <th class="hidden-sm hidden-md">Department</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="course in model.userCourses">
+                    <tr>
+                        <td class="hidden-sm hidden-md">{{course.courseno}}</td>
+                        <td>
+                            {{course.coursename}}
+                        </td>
+                        <td class="hidden-sm hidden-md">{{course.departmentname}}</td>
+                        </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-7 team203-right-pane team203-border container fadeIn third">
+                <h2 class="text-center page-title"> Add Course </h2>
+                <label for="ID">ID</label>
+                <input ng-model="profCourse.courseno" class="form-control" id="ID" placeholder="CS5200"/>
+                <label for="firstName">Course Name</label>
+                <input ng-model="profCourse.coursefirstname" class="form-control" id="firstName" placeholder="DBMS"/>
+                <label for="lastName">Section Name</label>
+                <input ng-model="profCourse.courselastname" class="form-control" id="lastName" placeholder="Section-1"/>
+                <label for="Description">Department</label>
+                <input ng-model="profCourse.departmentname" class="form-control" id="Description" placeholder="CCIS"/>
+                <br/>
+                <div class="pull-right">
+                    <a class="btn btn-success fadeIn fourth" ng-click="model.createCourse(profCourse)">
+                        <span class="glyphicon glyphicon-ok"> </span></a>
+                    <a class="btn btn-danger fadeIn fourth" ng-click="model.deleteCourse()">
+                        <span class="glyphicon glyphicon-trash"> </span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>

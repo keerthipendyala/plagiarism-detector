@@ -1,0 +1,84 @@
+<!-- This is the view for user login
+ -->
+<nav class="navbar navbar-fixed-top" xmlns="http://www.w3.org/1999/html">
+    <div class="navbar-header">
+        <a class="pull-left" href="#/login">
+            <img src="images/icon-team203.png"
+                 width="60" height="50">
+        </a>
+
+        <span class="logo pull-left">
+                 CopyCatch
+            </span>
+    </div>
+</nav>
+<div class="body-top login-body">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h3 class="active"> Login </h3>
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon"/>
+            </div>
+
+            <!-- Login Form -->
+            <form name="loginForm" ng-class="{submitted:formLogin.submitted}" role="form">
+                <br/>
+                <div ng-show="model.error" class="alert alert-danger" role="alert">
+                    {{model.error}}
+                </div>
+                <div ng-show="model.errormsg" class="alert alert-danger" role="alert">
+                    {{model.errormsg}}
+                </div>
+                <br/>
+
+                <span class="text-error"
+                      data-ng-show="loginForm.submitted && loginForm.username.$error.required">
+					Required** </span>
+                <input ng-model="user.username" id="username" name="username"
+                       maxlength="40" type="text" class="login-input fadeIn second" placeholder="username" required/>
+
+                <span class="text-error"
+                      data-ng-show="loginForm.submitted && loginForm.password.$error.required">
+					Required** </span>
+
+                <input ng-hide="passwordVisible" ng-model="user.password" type="password" id="password"
+                       maxlength="25" class="login-input fadeIn third" name="password"
+                       placeholder="password" required/>
+
+                <input ng-show="passwordVisible" ng-model="user.password" name="password"
+                       maxlength="25" type="text" class="login-input fadeIn third" placeholder="password"
+                       required/>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" ng-model="passwordVisible" ng-checked="false"
+                           id="check">
+                    <label class="form-check-label" for="check">
+                        Show Password
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-info fadeIn fourth" ng-click="model.login(user)">
+                        Login </a>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-success fadeIn fourth" ng-click="model.register()">
+                        Register </a>
+                </div>
+
+            </form>
+
+            <div id="formFooter">
+                <a class="underlineHover" ng-click="model.profRegister()">Send Registration Request?</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--reference : https://codepen.io/danzawadzki/pen/EgqKRr-->

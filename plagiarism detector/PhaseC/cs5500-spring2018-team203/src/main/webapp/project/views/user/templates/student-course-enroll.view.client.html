@@ -1,0 +1,71 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="body-top">
+    <div class="container-fluid">
+        <div ng-show="model.message" class="alert alert-success" role="alert">
+            {{model.message}}
+        </div>
+        <h3 class="page-title fadeIn first">Available Courses</h3>
+        <br/>
+        <table ng-show="model.unregistered" class="table table-striped table-responsive fadeIn first">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th class="hidden-xs hidden-sm">ID</th>
+                <th>Name</th>
+                <th class="hidden-xs hidden-sm">Department</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="course in model.unregistered">
+            <tr>
+                <td>{{$index + 1}}</td>
+                <td class="hidden-xs hidden-sm">{{course.courseno}}</td>
+                <td>
+                    {{course.coursename}}
+                </td>
+                <td class="hidden-xs hidden-sm">{{course.departmentname}}</td>
+                <td>
+                    <a class="btn btn-success fadeIn fourth" ng-click="model.enrollCourse(course)">
+                        Enroll
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>

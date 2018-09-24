@@ -1,0 +1,115 @@
+<!-- This is the view for student course page-->
+<div class="container-fluid">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+            <div class="navbar-header">
+                <a class="pull-left fas-style" ng-click="model.goBack()">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a class="pull-left" href="#">
+                    <img src="images/icon-team203.png"
+                         width="60" height="50">
+                </a>
+                <span class="logo pull-left">
+                 CopyCatch
+            </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-top">
+        <h3 class="text-center page-title">Course Board</h3>
+
+        <br/>
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div style="font-size:15px;text-align: end"><b>Select Semester</b></div>
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                {{model.selectedSemester.semestername}}
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="semester in model.semesters">
+                                    <a ng-click="model.changeSelectedSemester(semester)">{{semester.semestername}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-grp">
+                <span class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button"
+                            data-toggle="dropdown">
+                        Sort by
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="model.changeSortType('courseno')"> Course No</a></li>
+                        <li><a ng-click="model.changeSortType('coursename')">Course Name </a></li>
+                        <li><a ng-click="model.changeSortType('departmentname')">Department </a></li>
+                    </ul>
+                    </span>
+                <a data-ng-show="model.userRole == 'student'" ng-click="model.enrollCourse()"
+                   class="btn btn-success buton">
+                    Enroll<span style="padding-left: 15px" class="glyphicon glyphicon-plus">
+            </span>
+                </a>
+                <a data-ng-show="model.userRole == 'professor'" ng-click="model.createCourse()"
+                   class="btn btn-success buton">
+                    Add<span style="padding-left: 15px" class="glyphicon glyphicon-plus">
+            </span>
+                </a>
+                <a data-ng-show="model.userRole == 'professor'" ng-click="model.viewViolations()"
+                   class="btn btn-danger buton">
+                    View Violations
+                </a>
+        </div>
+
+
+    </div>
+</div>
+
+<ul>
+    <div ng-repeat="c in model.userCourses | orderBy:sortType:sortReverse">
+        <li class="sticky-li">
+            <a class="sticky-a">
+                <div data-ng-show="model.userRole == 'professor'" class="sticky-icon pull-right">
+                            <span ng-click="model.editCourse(c.courseid)" class="sticky-cog">
+                                <i class="fas fa-cog"></i></span>
+                    <span ng-click="model.deleteCourse(c.courseid)" class="sticky-cross">
+                                <i class="fas fa-times"></i></span>
+                </div>
+                <h2 ng-click=model.assg_page(c) class="noteTitle">{{c.departmentname}}-{{c.courseno}}</h2>
+                <p ng-click=model.assg_page(c)>{{c.coursename}}</p>
+            </a>
+        </li>
+    </div>
+</ul>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userInfo.userid}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!--References: https://code.tutsplus.com/tutorials/create-a-sticky-note-effect-in-5-easy-steps-with-css3-and-html5--net-13934-->

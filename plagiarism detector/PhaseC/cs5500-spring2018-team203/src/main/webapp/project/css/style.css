@@ -1,0 +1,973 @@
+/**
+ * Style Sheet for display related settings.
+ */
+
+.navbar {
+    background-color: black;
+    height: 51px;
+    color: azure;
+    font-family: 'Georgia', serif;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+h1 {
+    color: brown;
+}
+
+h5 {
+    color: brown;
+}
+
+h3 {
+    padding-top: 20px;
+    color: midnightblue;
+    font-family: 'Arial', serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+h4 {
+    color: #800000;
+    font-weight: bold;
+}
+
+h2 {
+    color: maroon;
+    font-family: 'Open Sans', sans-serif;
+}
+
+table {
+    border: 3px solid black;
+
+}
+
+#desc-table {
+    border: 3px solid;
+
+}
+
+#desc-td {
+    color: black;
+}
+
+td {
+    color: black;
+}
+
+p {
+    color: black;
+    font-family: 'Georgia', sans-serif;
+}
+
+.name {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: x-large;
+    color: whitesmoke;
+}
+
+.times {
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.body-top {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.refresh {
+    padding-right: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: arial, sans-serif;
+    font-size: 120%;
+    margin: 3em;
+    color: black;
+}
+
+h2, p {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+ul, li {
+    list-style: none;
+}
+
+ul {
+    overflow: hidden;
+    padding: 3em;
+}
+
+.sticky-a {
+    text-decoration: none;
+    color: #000;
+    background: lavender;
+    display: block;
+    height: 20em;
+    width: 20em;
+    padding: 1em;
+    -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+    box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+    -moz-transition: -moz-transform .15s linear;
+    -o-transition: -o-transform .15s linear;
+    -webkit-transition: -webkit-transform .15s linear;
+}
+
+.sticky-li {
+    margin: 2.5em;
+    float: left;
+}
+
+.noteTitle {
+    color: indigo;
+}
+
+.navbar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: wheat;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+ul li h2 {
+    font-size: 140%;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+ul li p {
+    font-family: "Reenie Beanie", arial, sans-serif;
+    font-size: 180%;
+}
+
+.sticky-a:hover, .sticky-a:focus {
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    font-family: 'Tangerine', serif;
+    font-size: 40px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.page-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.prof-section {
+    font: 2.5vw 'Gloria Hallelujah';
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    /*height: 680px;*/
+    padding-top: 100px;
+    padding-left: 60px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100% auto;
+    background-image: url("../images/blackboardGreen-team203.png");
+    background-position: center;
+    background-position-y: 50px;
+    background-repeat: no-repeat;
+}
+
+.tab-body {
+    box-sizing: border-box
+}
+
+.tab-body-font {
+    font-family: "Lato", sans-serif;
+}
+
+/* Style the tab */
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 500px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 500px;
+}
+
+.team203-list {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+.team203-list-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.team203-right-pane {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-y: auto;
+}
+
+.team203-border {
+    border-left: 1px solid lightslategrey;
+}
+
+.exc {
+    color: maroon;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* BASIC */
+
+.login-body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    background: indianred;
+}
+
+/* STRUCTURE */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+/* FORM TYPOGRAPHY*/
+
+.login-input {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+input[type=password]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+}
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+}
+
+.underlineHover:hover {
+    color: #0d0d0d;
+}
+
+.underlineHover:hover:after {
+    width: 100%;
+}
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+}
+
+#icon {
+    width: 60%;
+}
+
+.text-error {
+    text-align: left;
+    color: maroon;
+}
+
+th {
+    font-size: 20px;
+    font-family: "Arial Rounded MT Bold", serif;
+}
+
+tr {
+    font-size: 20px;
+    font-family: "Comic Sans MS", serif;
+}
+
+/*reference : https://codepen.io/danzawadzki/pen/EgqKRr*/
+
+.shredder-body {
+    background: black;
+}
+
+.animate-shredded-paper {
+    -webkit-animation: shredGo 3.5s 1 forwards;
+    animation: shredGo 3.5s 1 forwards;
+}
+
+.animate-content {
+    animation: cover 2.6s 1 forwards 1s;
+    -webkit-animation: cover 2.2s 1 forwards 1s;
+}
+
+.shredded-holder-animate {
+    animation: shredShake 0.12s 26 0.5s;
+    -webkit-animation: shredShake 0.12s 26 0.5s;
+}
+
+.shredded-paper-p-animate {
+    animation: Animation1 3.6s 1 forwards 1s;
+    -webkit-animation: Animation1 3.6s 1 forwards 1s;
+}
+
+.shredded-paper-q-animate {
+    animation: Animation2 3.6s 1 forwards 1s;
+    -webkit-animation: Animation2 3.6s 1 forwards 1s;
+}
+
+.shredded-paper {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    left: 525px;
+    top: 20px;
+    z-index: 5;
+}
+
+.shredded-paper > div[class^='part-'] {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 99;
+    top: 0;
+}
+
+.shredded-paper > .content {
+    background: #dce8f1;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    -webkit-transform: translateZ(180px) scale(0.82);
+    top: 0;
+    z-index: 9999;
+}
+
+.shredded-paper .part-1 {
+    clip: rect(0, 40px, 300px, 0);
+    background: #fff;
+    background: -webkit-radial-gradient(32% 97%, 29% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-2 {
+    clip: rect(0, 80px, 300px, 40px);
+    background: #fff;
+    background: -webkit-radial-gradient(28% 11%, 16% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-3 {
+    clip: rect(0, 120px, 300px, 80px);
+    background: #fff;
+    background: -webkit-radial-gradient(12% 88%, 23% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-4 {
+    clip: rect(0, 160px, 300px, 120px);
+    background: #fff;
+    background: -webkit-radial-gradient(73% 9%, 65% 52%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-5 {
+    clip: rect(0, 200px, 300px, 160px);
+    background: #fff;
+    background: -webkit-radial-gradient(23% 97%, 29% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)), -webkit-radial-gradient(72% 20%, 29% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-6 {
+    clip: rect(0, 240px, 300px, 200px);
+    background: #fff;
+    background: -webkit-radial-gradient(85% 97%, 46% 57%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #FFF;
+}
+
+.shredded-paper .part-7 {
+    clip: rect(0, 280px, 300px, 240px);
+    background: #fff;
+    background: -webkit-radial-gradient(85% 24%, 29% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredded-paper .part-8 {
+    clip: rect(0, 320px, 300px, 280px);
+    background: #fff;
+    background: -webkit-radial-gradient(104% 93%, 46% 52%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #FFF;
+}
+
+.shredded-paper .part-9 {
+    clip: rect(0, 360px, 300px, 320px);
+    background: #fff;
+    background: -webkit-radial-gradient(39% 18%, 73% 52%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #FFF;
+}
+
+.shredded-paper .part-10 {
+    clip: rect(0, 400px, 300px, 360px);
+    background: #fff;
+    background: -webkit-radial-gradient(77% 97%, 29% 62%, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0)) #fff;
+}
+
+.shredder-holder {
+    position: relative;
+    top: 350px;
+    left: 470px;
+    width: 450px;
+}
+
+.shredder {
+    font-weight: bold;
+    font-size: 1.7em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    padding: 33px 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    border-radius: 2px;
+    height: 100px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 9999999;
+    background: slategrey;
+    text-align: center;
+}
+
+.shred-me {
+    font-weight: bold;
+    background: maroon;
+    color: #FFF;
+    cursor: pointer;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 18px 10px;
+    font-size: 1.5em;
+    position: absolute;
+    top: 236px;
+    font-family: 'Arial', sans-serif;
+}
+
+.shred-me:hover {
+    background: rgb(30, 112, 176);
+}
+
+.shred-me:active {
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.shred-alert {
+    color: black;
+    position: relative;
+    z-index: 999;
+    padding-top: 100px;
+    font-size: 20px;
+
+}
+
+@-webkit-keyframes shredGo {
+    10% {
+        top: 20px;
+    }
+    12% {
+        top: 15px;
+    }
+    30% {
+        top: 150px;
+    }
+    32% {
+        top: 145px;
+    }
+    60% {
+        top: 320px;
+    }
+    62% {
+        top: 315px;
+    }
+    68% {
+        top: 380px;
+    }
+    100% {
+        top: 400px;
+    }
+}
+
+@keyframes shredGo {
+    10% {
+        top: 20px;
+    }
+    12% {
+        top: 15px;
+    }
+    30% {
+        top: 150px;
+    }
+    32% {
+        top: 145px;
+    }
+    60% {
+        top: 320px;
+    }
+    62% {
+        top: 315px;
+    }
+    68% {
+        top: 380px;
+    }
+    100% {
+        top: 400px;
+    }
+}
+
+@-webkit-keyframes shredShake {
+    50% {
+        top: 352px;
+    }
+    100% {
+        top: 348px;
+    }
+}
+
+@keyframes shredShake {
+    50% {
+        top: 352px;
+    }
+    100% {
+        top: 348px;
+    }
+}
+
+@-webkit-keyframes cover {
+    30% {
+        top: -25px;
+    }
+    80% {
+        height: 20%;
+    }
+    100% {
+        top: 0;
+        height: 0;
+    }
+}
+
+@keyframes cover {
+    30% {
+        top: -25px;
+    }
+    80% {
+        height: 20%;
+    }
+    100% {
+        height: 0;
+        top: -5px;
+    }
+}
+
+@keyframes Animation1 {
+    20% {
+        transform: scaleY(1.1) rotateX(5deg);
+    }
+    50% {
+        transform: scaleY(1.1) rotateX(-5deg);
+        top: 0;
+    }
+    90% {
+        transform: scaleY(1.1) rotateX(10deg);
+        top: 400px;
+    }
+    100% {
+        transform: scaleY(1.1) rotateX(10deg);
+        top: 1200px;
+    }
+}
+
+@-webkit-keyframes Animation1 {
+    20% {
+        -webkit-transform: scaleY(1.1) rotateX(5deg);
+    }
+    50% {
+        -webkit-transform: scaleY(1.1) rotateX(-5deg);
+        top: 0;
+    }
+    90% {
+        -webkit-transform: scaleY(1.1) rotateX(10deg);
+        top: 400px;
+    }
+    100% {
+        -webkit-transform: scaleY(1.1) rotateX(10deg);
+        top: 1200px;
+    }
+}
+
+@keyframes Animation2 {
+    20% {
+        transform: scaleY(1.1) rotateX(-5deg);
+    }
+    50% {
+        transform: scaleY(1.1) rotateX(-5deg);
+        top: 0;
+    }
+    90% {
+        transform: scaleY(1.1) rotateX(-10deg);
+        top: 400px;
+    }
+    100% {
+        transform: scaleY(1.1) rotateX(-10deg);
+        top: 1200px;
+    }
+}
+
+@-webkit-keyframes Animation2 {
+    20% {
+        -webkit-transform: scaleY(1.1) rotateX(-5deg);
+    }
+    50% {
+        -webkit-transform: scaleY(1.1) rotateX(-5deg);
+        top: 0;
+    }
+    90% {
+        -webkit-transform: scaleY(1.1) rotateX(-10deg);
+        top: 400px;
+    }
+    100% {
+        -webkit-transform: scaleY(1.1) rotateX(-10deg);
+        top: 1200px;
+    }
+}
+
+/* ==================== IGNORE */
+
+.go-back a {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.go-back a i {
+    font-size: 0.7em;
+    margin: 0 10px 0 0;
+}
+
+.go-back a:hover {
+    background: rgb(30, 112, 176);
+}
+
+.go-back a:active {
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.shred-font {
+    font-family: "Comic Sans MS", serif;
+    padding-top: 10px;
+}
+
+.buton{
+    padding-right: 20px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: lightblue;
+}
+
+.check-select {
+    background-color: lightblue;
+}
+
+.fas-style {
+    padding-top: 9px;
+    padding-right: 7px;
+    font-size: 28px;
+    color: maroon;
+}
+
+.fa-arrow-circle-left {
+    color: #dce8f1;
+}
+
+.fa-arrow-circle-left:hover {
+    color: teal;
+}
+
+.fa-power-off {
+    padding-left: 5px;
+    color: crimson;
+}
+
+form.submitted .ng-invalid {
+    border: 1px solid #f00;
+}
+
+.subtitle {
+    font-size: 15px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: maroon;
+}
+
+.sticky-icon {
+    font-size: 18px;
+}
+
+.sticky-cog {
+    padding-right: 7px;
+}
+
+.sticky-cog:hover{
+    font-size: 25px;
+    color: indianred;
+}
+
+.sticky-cross:hover{
+    font-size: 25px;
+    color: firebrick;
+}
+
+.button-box {
+    text-align:center;
+    margin-top:20px;
+}
+
+.red{
+    background-color: brown;
+}
+
+
+/*Reference : https://www.inserthtml.com/2013/06/css-shredder/*/

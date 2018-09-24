@@ -1,0 +1,103 @@
+<!-- This is the view for student assignment upload page -->
+<div class="container-fluid">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+            <div class="navbar-header">
+                <a class="pull-left fas-style" ng-click="model.goBack()">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a class="pull-left" href="#">
+                    <img src="images/icon-team203.png"
+                         width="60" height="50">
+                </a>
+                <span class="logo pull-left">
+                 CopyCatch
+            </span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="body-top">
+        <!-- Tabs Titles -->
+        <h3>{{model.courseid}} - {{model.coursename}}</h3>
+        <div>
+            <div>
+                <!-- Table that constains the assignment list for a particular course-->
+                <table class="table table-striped table-responsive">
+                    <th>Homework List</th>
+                    <th>Description</th>
+                    <th>Submission History</th>
+                    <tbody>
+                    <tr ng-repeat="assg in model.assgs">
+                        <td data-ng-class="{'check-select':model.newAssg.assignmentid==assg.id}">
+                            <a ng-click="model.setUploadFor(assg)"><b>{{assg.assignmentname}}</b></a>
+                        </td>
+                        <td data-ng-class="{'check-select':model.newAssg.assignmentid==assg.id}">
+                            {{assg.description}}
+                        </td>
+                        <td>
+                        	<div>
+				                <a class="btn btn-primary btn-xs" ng-click="model.subHistory(assg.id)">
+				                    View my Submissions
+				                </a>
+				            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="model.canUpload">
+                <h4>Submit Your {{model.uploadingAssg.assignmentname}} Here</h4>
+                <!-- Assignemnt upload form -->
+                <form name="assgForm" ng-class="{submitted:formAssg.submitted}">
+                    <div ng-show="model.err" class="alert alert-danger" role="alert">
+                        {{model.err}}
+                    </div>
+                    <div ng-show="model.msg" class="alert alert-success" role="alert">
+                        {{model.msg}}
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Submission Name</h6>
+                        <input ng-model="model.newAssg.submissionname" name="description"
+                               type="text" class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <h6>File Description</h6>
+                        <input ng-model="model.newAssg.submissiondesc" name="description"
+                               type="text" class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <h6>Upload link</h6>
+                        <input ng-model="model.newAssg.submissionlink" name="description"
+                               type="text" class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary btn-block" ng-click="model.submitAssg()">
+                            Submit
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a href="#/profile/{{model.userInfo.role}}/{{model.userInfo.userid}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+

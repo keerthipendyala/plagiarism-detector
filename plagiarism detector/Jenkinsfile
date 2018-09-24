@@ -1,0 +1,66 @@
+pipeline {
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -f PhaseC/cs5500-spring2018-team203/pom.xml -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn -f PhaseC/cs5500-spring2018-team203/pom.xml test'
+            }
+        }
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                        sh 'mvn -f PhaseC/cs5500-spring2018-team203/pom.xml clean install'
+                        sh 'mvn -f PhaseC/cs5500-spring2018-team203/pom.xml sonar:sonar'
+                }
+            }
+        }
+        stage('Quality') {
+          steps {
+            sh 'sleep 30'
+            timeout(time: 10, unit: 'SECONDS') {
+               retry(5) {
+                  script {
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                      if (qg.status == 'WARN') {
+                      mail to: 'sharma.kar@husky.neu.edu,pendyala.k@husky.neu.edu,sivanandam.h@husky.neu.edu,james.an@husky.neu.edu',
+                       subject: "Quality Gate Warning: ${currentBuild.fullDisplayName}",
+                       body: "The current build did not pass SonarQube quality. Check warning in SonarQube http://128.31.25.108:9000/dashboard?id=edu.northeastern.cs5500%3Acs5500-spring2018-team203 ${env.BUILD_URL}"
+                      } else {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+    post {
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+
+            mail to: 'sharma.kar@husky.neu.edu,pendyala.k@husky.neu.edu,sivanandam.h@husky.neu.edu,james.an@husky.neu.edu',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
+
+            slackSend channel: '#team-203',
+              color: 'danger',
+              message: "The pipeline ${currentBuild.fullDisplayName} failed."
+
+        }
+    }
+}

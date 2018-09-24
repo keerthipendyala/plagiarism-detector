@@ -1,0 +1,84 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+             <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="body-top">
+    <div class="row">
+        <div class="col-sm-4 hidden-xs">
+            <div class="container-fluid">
+                <h3 class="page-title fadeIn first">Assignments</h3>
+                <br/>
+                <table ng-show="model.assgInfo" class="table table-striped table-responsive fadeIn first">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="hidden-sm hidden-md">Description</th>
+                        <th></th>
+                    </tr>
+
+                    </thead>
+                    <tbody ng-repeat="assg in model.assgInfo">
+                    <tr>
+                        <td><a href="#/{{model.userInfo.userid}}/prof-submission/{{model.semesterId}}/{{assg.courseid}}/{{assg.id}}">
+                            {{assg.assignmentname}}</a>
+                        </td>
+                        <td class="hidden-sm hidden-md">{{assg.description}}</td>
+                        <td><a ng-click="model.editAssignment(assg.id)">
+                          <span class="glyphicon glyphicon-cog">
+                        </span>
+                        </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-8 team203-right-pane team203-border container fadeIn third">
+                <h2 class="text-center page-title"> Edit Assignment </h2>
+                <label for="Name">Name</label>
+                <input ng-model="model.assignment.assignmentname" class="form-control" id="Name" placeholder="Name"/>
+
+                <label for="Description">Description</label>
+                <textarea ng-model="model.assignment.description" rows="5" class="form-control" id="Description"
+                          placeholder="Description"></textarea>
+                <br/>
+                <div class="pull-right">
+                    <a class="btn btn-success fadeIn fourth" ng-click="model.updateAssignment(model.assignment)">
+                        <span class="glyphicon glyphicon-ok"> </span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,70 @@
+<!-- This is the view for students to view their submission history-->
+<div class="container-fluid">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+            <div class="navbar-header">
+                <a class="pull-left fas-style" ng-click="model.goBack()">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a class="pull-left" href="#">
+                    <img src="images/icon-team203.png"
+                         width="60" height="50">
+                </a>
+                <span class="logo pull-left">
+                 CopyCatch
+            </span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="body-top">
+        <!-- Tabs Titles -->
+        <h3>My Submission History</h3>
+        <div>
+            <table class="table">
+                <th>Submission Name</th>
+                <th>Submission Link</th>
+                <th>Submission Description</th>
+                <tbody>
+                <tr ng-repeat="sub in model.subs">
+                    <td>
+                        {{sub.submissionname}}
+                    </td>
+                    <td>
+                        {{sub.submissionlink}}
+                    </td>
+                    <td>
+                        {{sub.submissiondesc}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <a class="btn btn-primary btn-xs center-xs" ng-click="model.goBack()">
+                Go to Assignment Submission Page
+            </a>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-text pull-left">
+                    <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+

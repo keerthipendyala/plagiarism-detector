@@ -1,0 +1,400 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+        <div class="navbar-header">
+            <a class="pull-left fas-style" ng-click="model.goBack()">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+            <a class="pull-left" href="#">
+                <img src="images/icon-team203.png"
+                     width="60" height="50">
+            </a>
+            <span class="logo pull-left">
+                 CopyCatch
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="body-top">
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div class="tab-body tab-body-font">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'p1')" id="defaultOpen">
+                <h4>Professor Registration Requests</h4>
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'p2')"><h4>All Professors</h4></button>
+            <button class="tablinks" onclick="openCity(event, 'p3')"><h4>All Students</h4></button>
+            <button class="tablinks" onclick="openCity(event, 'p4')"><h4>Create an User</h4></button>
+        </div>
+        <div id="p1" class="tabcontent table table-striped table-responsive">
+            <div ng-show="model.rmessage" class="alert alert-warning" role="alert">
+                {{model.rmessage}}
+            </div>
+
+            <br/>
+
+            <table ng-show="model.professor_info" class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="hidden-xs">Username</th>
+                    <th class="hidden-xs">Email</th>
+                    <th>
+                        Decision
+                    </th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="prof in model.professor_info">
+                <tr>
+                    <td>{{prof.fullname}}</td>
+                    <td class="hidden-xs">{{prof.username}}</td>
+                    <td class="hidden-xs">{{prof.email}}</td>
+                    <td>
+                        <button ng-show="prof.flag" ng-click="model.acceptRequest(prof.userid)" type="button"
+                                class="btn btn-info">
+                            Accept
+                        </button>
+                        <button ng-show="prof.flag" ng-click="model.rejectRequest(prof.userid)" type="button"
+                                ng-model="reject"
+                                class="btn btn-danger">Reject
+                        </button>
+                        <button ng-hide="prof.flag" type="button" class="btn btn-success disabled">Accepted</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="p2" class="tabcontent table table-striped table-responsive">
+            <div ng-show="model.pmessage" class="alert alert-warning" role="alert">
+                {{model.pmessage}}
+            </div>
+            <table ng-show="model.professor_all" class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="hidden-xs">Username</th>
+                    <th class="hidden-xs">Email</th>
+                    <th class="hidden-xs">Change Role</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="professor in model.professor_all">
+                <tr>
+                    <td>{{professor.fullname}}</td>
+                    <td class="hidden-xs">{{professor.username}}</td>
+                    <td class="hidden-xs">{{professor.email}}</td>
+                    <td class="hidden-xs">
+                        <select ng-model="professor.newrole" ng-options="r for r in model.roles">
+                            </select>
+                        <button class="btn btn-primary btn-xs" ng-click="model.updateRole(professor)">update
+                        </button>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modalEditUser" ng-click="model.editUser(professor)">edit</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-xs" ng-click="model.deleteUser(professor)">x</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="p3" class="tabcontent table table-striped table-responsive">
+            <div ng-show="model.smessage" class="alert alert-warning" role="alert">
+                {{model.smessage}}
+            </div>
+            <table ng-show="model.student_all" class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="hidden-xs">Username</th>
+                    <th class="hidden-xs">Email</th>
+                    <th class="hidden-xs">Change Role</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="student in model.student_all">
+                <tr>
+                    <td>{{student.fullname}}</td>
+                    <td class="hidden-xs">{{student.username}}</td>
+                    <td class="hidden-xs">{{student.email}}</td>
+                    <td class="hidden-xs">
+                        <select ng-model="student.newrole" ng-options="r for r in model.roles">
+                            </select>
+                        <button class="btn btn-primary btn-xs" ng-click="model.updateRole(student)">update
+                        </button>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modalEditUser" ng-click="model.editUser(student)">edit</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-xs" ng-click="model.deleteUser(student)">x</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="p4" class = "tabcontent table table-striped table-responsive">
+            <form name="registerForm" ng-class="{submitted:registerForm.submitted}">
+                <h6>USERNAME</h6>
+                <div class="form-group">
+                    <input ng-model="user.username" name="username"
+                           maxlength="40" type="text" class="form-control" placeholder="Bob" required/>
+                </div>
+
+                <div class="form-group">
+                    <h6>PASSWORD</h6>
+                    <input ng-model="user.password" name="password"
+                           maxlength="25" type="password" class="form-control" placeholder="*********" required/>
+                </div>
+
+                <div class="form-group">
+                    <h6>VERIFY PASSWORD</h6>
+                    <input ng-model="user.verifyPassword"
+                           name="verifyPassword" type="password" class="form-control"
+                           maxlength="25" placeholder="*********" required/>
+                </div>
+
+                <div class="form-group">
+                    <h6>FULL NAME</h6>
+                    </span> <input ng-model="user.fullname" name="fullname" type="text"
+                                   maxlength="40" class="form-control" placeholder="Bob Barb"/>
+                </div>
+
+                <div class="form-group">
+                    <h6>EMAIL</E></h6>
+                    </span> <input ng-model="user.email" name="email" type="email"
+                                   maxlength="40" class="form-control" placeholder="bob@bob.com"/>
+                </div>
+
+
+                <div class="form-group">
+                    <h6>ROLE</E></h6>
+                    <select ng-model="user.role" ng-options="r for r in model.roles">
+                            </select>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-primary btn-block" ng-click="model.registerusr(user)">
+                        Register</a>
+                </div>
+            </form>
+        </div>
+
+        <form name="editUserForm" ng-class="{submitted:editUserForm.submitted}" class="modal fade"
+              id="modalEditUser" tabindex="-1"
+              aria-labelledby="myModalLabel"
+              aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn-link pull-right" ng-click="model.resetModal()">
+                            <i class="glyphicon glyphicon-refresh refresh"></i>
+                        </button>
+                        <h4 class="modal-title">Edit User</h4>
+                    </div>
+
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="username">
+                                Username
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </div>
+                                <input ng-model="model.editusr.username" id="username" name="username"
+                                       type="text" class="form-control" placeholder="username" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="fullname">
+                                FullName
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fas fa-address-card"></i>
+                                </div>
+                                <input ng-model="model.editusr.fullname" id="fullname" name="fullname"
+                                       type="text" class="form-control" placeholder="fullname" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="email">
+                                Email
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </div>
+                                <input ng-model="model.editusr.email" id="email" name="email"
+                                       type="email" class="form-control" placeholder="bob@gmail.com" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="phone">
+                                PHONE NUMBER
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                </div>
+                                <input ng-model="model.editusr.phone" id="phone" name="phone"
+                                       type="phone" class="form-control" placeholder="8889898989" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="address">
+                                ADDRESS
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </div>
+                                <input ng-model="model.editusr.address" id="address" name="address"
+                                       type="address" class="form-control" placeholder="57 smith street, boston" required/>
+                            </div>
+                        </div>
+                        <div class="md-form mb-5">
+                            <label class="control-label" for="dateofBirth">
+                                DATE OF BIRTH(yyyy-mm-dd)
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </div>
+                                <input ng-model="model.editusr.dateofBirth" id="dateofBirth" name="dateofBirth"
+                                       type="dateofBirth" class="form-control" placeholder="1993-12-01" required/>
+                            </div>
+                        </div>
+
+                        <div ng-if="model.editusr.role === 'student'">
+                            <div class="md-form mb-5">
+                                <label class="control-label" for="status">
+                                    STATUS
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="  glyphicon glyphicon-edit"></i>
+                                    </div>
+                                    <input ng-model="model.editusr.status" id="status" name="status"
+                                           type="status" class="form-control" placeholder="fulltime" required/>
+                                </div>
+                            </div>
+                            <div class="md-form mb-5">
+                                <label class="control-label" for="dateofgraduation">
+                                    DATE OF GRADUATION(yyyy-mm-dd)
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </div>
+                                    <input ng-model="model.editusr.dateofgraduation" id="dateofgraduation" name="dateofgraduation"
+                                           type="dateofgraduation" class="form-control" placeholder="2018-12-01" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="model.editusr.role === 'professor'">
+                            <div class="md-form mb-5">
+                                <label class="control-label" for="title">
+                                    TITLE
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </div>
+                                    <input ng-model="model.editusr.title" id="title" name="title"
+                                           type="title" class="form-control" placeholder="Dr" required/>
+                                </div>
+                            </div>
+                            <div class="md-form mb-5">
+                                <label class="control-label" for="degree">
+                                    DEGREE
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-list-alt"></i>
+                                    </div>
+                                    <input ng-model="model.editusr.degree" id="degree" name="degree"
+                                           type="degree" class="form-control" placeholder="P.H.D" required/>
+                                </div>
+                            </div>
+                            <div class="md-form mb-5">
+                                <label class="control-label" for="department">
+                                    DEPARTMENT
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-book"></i>
+                                    </div>
+                                    <input ng-model="model.editusr.department" id="department" name="department"
+                                           type="department" class="form-control" placeholder="CCIS" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button ng-click="model.updateUsr(model.editusr)"
+                                    class="btn btn-success">Update </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!--Reference : https://www.w3schools.com/howto/howto_js_vertical_tabs.asp-->

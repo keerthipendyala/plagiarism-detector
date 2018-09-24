@@ -1,0 +1,90 @@
+<nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+        <span class="navbar-header pull-right navbar-name">
+            <span>
+
+					Hi {{model.userInfo.username}}!
+            </span>
+              <a ng-click="model.logout()">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </span>
+            <div class="navbar-header">
+                <a class="pull-left fas-style" ng-click="model.goBack()">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a class="pull-left" href="#">
+                    <img src="images/icon-team203.png"
+                         width="60" height="50">
+                </a>
+                <span class="logo pull-left">
+                 CopyCatch
+            </span>
+            </div>
+        </div>
+    </nav>
+</nav>
+
+
+<div class="body-top">
+    <div ng-show=model.results>
+        <h3 class="page-title">Plagiarism Report</h3>
+        <table class="table table-striped table-responsive">
+            <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Student Name</th>
+                <th>Course Number</th>
+                <th>Course Name</th>
+                <th>Semester</th>
+                <th>Assignment name</th>
+                <th>Percentage Match</th>
+                <th>View Report</th>
+            </tr>
+
+            </thead>
+            <tbody ng-repeat="score in model.violations">
+            <tr>
+                <td>
+                    {{score.studentid}}
+                </td>
+                <td>
+                    {{score.studentname}}
+                </td>
+                <td>
+                    {{score.courseno}}
+                </td>
+                <td>
+                    {{score.coursename}}
+                </td>
+                <td>
+                    {{score.semestername}}
+                </td>
+                <td>
+                    {{score.assignmentname}}
+                </td>
+                <td>
+                    {{score.maxscore}}
+                </td>
+                <td>
+                    <a href="{{score.reportlink}}" target="_blank">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/profile/{{model.userInfo.role}}/{{model.userId}}">
+            <span style="font-size: 20px" class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!--Reference for progress bar : https://codepen.io/gustitammam/pen/RRXGdj-->
